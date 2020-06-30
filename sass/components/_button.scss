@@ -1,0 +1,92 @@
+
+.btn {
+    &:link,
+    &:visited {
+        text-transform: uppercase;
+        text-decoration: none;
+        padding: 1.5rem;
+        display: inline-block;
+        transition: all $transition-time;  /* sets all prop on element to take .2s  */ 
+        position: relative; 
+        border-radius: 7rem;
+        font-size: $default-font-size;
+    
+    }
+    
+    &:hover{
+        transform: translateY(-2px);
+        box-shadow: 0 10px 2rem rgba($color-black, 0.2);
+        
+    }
+    &:active{
+        transform: translateY(-1px);
+        box-shadow: 0 .5rem 1rem rgba($color-black, 0.2); /* shadow in x shadow in y and blur and color of shadow */
+        
+    }
+    
+    &--white {
+        background-color: $color-bg-white;
+        color: $color-grey-dark;
+       
+        
+       /* position: absolute; unresponsive, so used margin bottom on element on top.
+        top: 200px;
+        left: 25%;*/
+    }
+    
+    &::after{
+        content: "";
+        display: inline-block; /* these two are req. prop */
+        height: 100%;
+        width: 100%;
+        border-radius: 7rem;
+        position: absolute;
+        top: 0;
+        left:0;
+        z-index: -1;
+        transition: all .6s;
+        
+    }
+    
+    &--white::after{
+        background-color: $color-bg-white ;
+    }
+    
+    &:hover::after {
+        transform: scaleX(1.5) scaleY(1.6);
+        opacity: 0;
+    
+    }
+    
+    &--animated { 
+        animation: moveInBottom 1.25s ease-out;
+        animation-fill-mode: backwards;
+    
+    
+    }
+    }
+
+    .btn-text {
+        &:link,
+        &:visited {
+            color: $color-primary;
+            display: inline-block;  //bcz we want all the prop to apply to this like padding margin.
+            text-decoration: none;
+            border-bottom: 1px solid $color-primary;
+            padding: 3px;
+            font-size: $default-font-size;
+            transition: all $transition-time;
+
+        }
+        &:hover{
+            background-color: $color-primary;
+            color: white;
+            box-shadow: 0 1rem 2rem rgba($color-black, .15);
+            transform: translateY(-2px);
+
+        }
+        &:active{
+            transform: translateY(0);
+
+        }
+    }

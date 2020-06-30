@@ -1,0 +1,26 @@
+.row {
+    max-width: $grid-width;
+    margin: 0 auto;   //way to align the center the block
+    
+    
+    &:not(:last-child){
+        margin-bottom: $gutter-vertical; //setting the vertical margin on all rows except last
+    }
+}
+
+//@include clearfix;
+
+[class ^= "col-"] {   //applies to all classes start with col-, can use # or * to indicate end and contain
+    float: left;
+
+    &:not(:last-child){
+        margin-right: $gutter-horizontal;
+    }
+}
+
+.col-1-of-2 {
+    width: calc((100% - #{$gutter-horizontal})/2);
+    
+    
+}
+
