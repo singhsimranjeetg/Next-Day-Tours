@@ -57,6 +57,11 @@
         opacity: 0;
     
     }
+
+    &--green {
+        background-color: $color-primary;
+        color: $color-bg-white;
+    }
     
     &--animated { 
         animation: moveInBottom 1.25s ease-out;

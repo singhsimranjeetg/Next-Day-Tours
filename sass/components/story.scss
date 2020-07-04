@@ -1,0 +1,79 @@
+.story {
+    width: 70%;
+    height: 15rem;
+    margin: 0 auto;  //can use this to horz. align item, only work for div inside div element
+    box-shadow: 0 3rem 6rem rgba($color-black, .1);
+    background-color: rgba( $color-bg-white, .6);
+    padding: 6rem;
+    
+    border-radius: 3px;
+    font-size: $default-font-size;
+    transform: skewX(-12deg);
+    position: relative;
+    
+    
+
+   // @include clearfix;
+
+    &__shape {
+        width: 15rem;
+        height: 15rem;   
+        float: left;
+        position: relative;         //float only works with width and height defined
+         
+        -webkit-shape-outside: circle(50% at 50% 50%);   //defines how text wud flow around the element
+        shape-outside: circle(50% at 50% 50%);  //of the current element
+
+        -webkit-clip-path: circle(50% at 50% 50%);
+        clip-path: circle(50% at 50% 50%);
+        transform: translateX(-3rem) skewX(12deg);    //never use margin or padding prop on floated element
+        backface-visibility: hidden;
+        
+
+        & img {
+            background-size: cover;
+            height: 100%;  //of parent
+            transform: translateX(-4rem) scale(1.4);
+            transition: all .5s;
+            
+        }
+
+    }
+
+    &__text {
+        transform: skewX(12deg);
+        position: absolute;
+        top: 6rem;
+        left: 23rem;
+        margin-right: 6rem;
+        
+  
+        
+    }
+
+    &__caption {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, 20%);
+        font-size: 1.7rem;
+        text-transform: uppercase;
+        text-align: center;
+        color: $color-bg-white;
+        opacity: 0;
+        transition: all .5s;
+    }
+
+    &:hover &__caption {
+        opacity: 1;
+        transform: translate(-50%, -50%);
+        
+    }
+
+    &:hover &__shape img {
+        transform: translateX(-4rem) scale(1);
+        filter: blur(3px) brightness(80%);
+        
+    }
+    
+}

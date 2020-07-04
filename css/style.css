@@ -1,8 +1,3 @@
-.clearfix {
-  content: "";
-  clear: both;
-  display: table; }
-
 @keyframes moveInLeft {
   0% {
     transform: translateX(-10rem);
@@ -111,13 +106,30 @@ body {
   text-align: center; }
 
 .u-margin-bottom-big {
-  margin-bottom: 8rem; }
+  margin-bottom: 6rem; }
+
+.u-margin-top-huge {
+  margin-top: 8rem; }
 
 .u-margin-bottom-medium {
   margin-bottom: 4rem; }
 
 .u-margin-bottom-small {
   margin-bottom: 1.5rem; }
+
+.bg-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  opacity: .15;
+  overflow: hidden; }
+  .bg-video__content {
+    height: 100%;
+    width: 100%;
+    object-fit: cover; }
 
 .btn:link, .btn:visited {
   text-transform: uppercase;
@@ -166,6 +178,10 @@ body {
   transform: scaleX(1.5) scaleY(1.6);
   opacity: 0; }
 
+.btn--green {
+  background-color: #55c57a;
+  color: #fff; }
+
 .btn--animated {
   animation: moveInBottom 1.25s ease-out;
   animation-fill-mode: backwards; }
@@ -187,6 +203,107 @@ body {
 
 .btn-text:active {
   transform: translateY(0); }
+
+.card {
+  perspective: 120rem;
+  -moz-perspective: 150rem;
+  position: relative;
+  height: 52rem; }
+  .card__side {
+    font-size: large;
+    color: white;
+    height: 50rem;
+    transition: all 1.2s ease;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    backface-visibility: hidden;
+    border-radius: 3px;
+    box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.15); }
+    .card__side--front {
+      background-color: #fff; }
+    .card__side--back {
+      transform: rotateY(180deg); }
+      .card__side--back--1 {
+        background-image: linear-gradient(to right bottom, #ffb900, #ff7730); }
+      .card__side--back--2 {
+        background-image: linear-gradient(to right bottom, #7ed56f, #28b485); }
+      .card__side--back--3 {
+        background-image: linear-gradient(to right bottom, #2998ff, #5643fa); }
+  .card:hover .card__side--front {
+    transform: rotateY(-180deg); }
+  .card:hover .card__side--back {
+    transform: rotateY(0deg); }
+  .card__picture {
+    background-size: cover;
+    height: 23rem;
+    background-blend-mode: screen;
+    overflow: hidden;
+    -webkit-clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+    clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px; }
+    .card__picture--1 {
+      background-image: linear-gradient(to right bottom, #ffb900, #ff7730), url(../../img/nat-5.jpg); }
+    .card__picture--2 {
+      background-image: linear-gradient(to right bottom, #7ed56f, #28b485), url(../../img/nat-6.jpg); }
+    .card__picture--3 {
+      background-image: linear-gradient(to right bottom, #2998ff, #5643fa), url(../../img/nat-7.jpg); }
+  .card__heading {
+    position: absolute;
+    top: 8rem;
+    right: 7px;
+    opacity: .8;
+    text-transform: uppercase;
+    font-size: 2.8rem;
+    font-weight: 300;
+    color: #fff;
+    width: 75%;
+    text-align: right;
+    margin-right: 5px; }
+  .card__heading-span {
+    padding: 1rem 0rem;
+    padding-left: 5px;
+    -webkit-box-decoration-break: clone;
+    box-decoration-break: clone; }
+    .card__heading-span--1 {
+      background-image: linear-gradient(to right bottom, #ffb900, #ff7730); }
+    .card__heading-span--2 {
+      background-image: linear-gradient(to right bottom, #7ed56f, #28b485); }
+    .card__heading-span--3 {
+      background-image: linear-gradient(to right bottom, #2998ff, #5643fa); }
+  .card__details {
+    color: #777;
+    text-transform: capitalize;
+    font-size: 1.5rem;
+    padding: 1rem; }
+    .card__details ul {
+      width: 70%; }
+    .card__details li {
+      list-style-type: none;
+      padding: 1rem;
+      text-align: center; }
+      .card__details li:not(:last-child) {
+        border-bottom: 1px solid #eee; }
+  .card__cta {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    text-align: center; }
+  .card__price-box {
+    text-align: center;
+    margin-bottom: 1rem;
+    color: #fff; }
+  .card__price-only {
+    font-size: 1.4rem;
+    text-transform: uppercase;
+    margin-bottom: -6rem; }
+  .card__price-value {
+    font-size: 6rem;
+    font-weight: 100; }
 
 .composition {
   position: relative; }
@@ -215,19 +332,116 @@ body {
   .composition:hover .composition__photo:not(:hover) {
     transform: scale(0.95); }
 
+.feature-box {
+  background-color: rgba(255, 255, 255, 0.8);
+  font-size: 1.5rem;
+  padding: 2.5rem;
+  text-align: center;
+  border-radius: 3px;
+  box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.15);
+  transition: transform 0.2s; }
+  .feature-box__icon {
+    font-size: 6rem;
+    margin-bottom: .5rem;
+    display: inline-block;
+    background-image: linear-gradient(to right, #7ed56f, #28b485);
+    color: transparent;
+    -webkit-background-clip: text; }
+  .feature-box:hover {
+    transform: translateY(-1.5rem) scale(1.03); }
+
+.story {
+  width: 70%;
+  height: 15rem;
+  margin: 0 auto;
+  box-shadow: 0 3rem 6rem rgba(0, 0, 0, 0.1);
+  background-color: rgba(255, 255, 255, 0.6);
+  padding: 6rem;
+  border-radius: 3px;
+  font-size: 1.6rem;
+  transform: skewX(-12deg);
+  position: relative; }
+  .story__shape {
+    width: 15rem;
+    height: 15rem;
+    float: left;
+    position: relative;
+    -webkit-shape-outside: circle(50% at 50% 50%);
+    shape-outside: circle(50% at 50% 50%);
+    -webkit-clip-path: circle(50% at 50% 50%);
+    clip-path: circle(50% at 50% 50%);
+    transform: translateX(-3rem) skewX(12deg);
+    backface-visibility: hidden; }
+    .story__shape img {
+      background-size: cover;
+      height: 100%;
+      transform: translateX(-4rem) scale(1.4);
+      transition: all .5s; }
+  .story__text {
+    transform: skewX(12deg);
+    position: absolute;
+    top: 6rem;
+    left: 23rem;
+    margin-right: 6rem; }
+  .story__caption {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, 20%);
+    font-size: 1.7rem;
+    text-transform: uppercase;
+    text-align: center;
+    color: #fff;
+    opacity: 0;
+    transition: all .5s; }
+  .story:hover .story__caption {
+    opacity: 1;
+    transform: translate(-50%, -50%); }
+  .story:hover .story__shape img {
+    transform: translateX(-4rem) scale(1);
+    filter: blur(3px) brightness(80%); }
+
 .row {
-  max-width: 5rem;
+  max-width: 114rem;
   margin: 0 auto; }
   .row:not(:last-child) {
-    margin-bottom: 3rem; }
+    margin-bottom: 8rem; }
 
+::after {
+  content: "";
+  clear: both;
+  display: table; }
+
+/*
+[class^="col"] {   //applies to all classes start with col-, can use # or * to indicate end and contain
+    float: left;
+
+    &:not(:last-child){
+        margin-right: $gutter-horizontal;
+    }
+}*/
 [class^="col-"] {
   float: left; }
   [class^="col-"]:not(:last-child) {
-    margin-right: 2rem; }
+    margin-right: 6rem; }
 
 .col-1-of-2 {
-  width: calc((100% - 2rem)/2); }
+  width: calc((100% - 6rem)/2); }
+
+.col-1-of-3 {
+  width: calc((100% - 2 * 6rem) / 3); }
+
+.col-2-of-3 {
+  width: calc(2 * ((100% - 2 * 6rem) / 3) + 6rem); }
+
+.col-1-of-4 {
+  width: calc((100% - 3 * 6rem) / 4); }
+
+.col-2-of-4 {
+  width: calc(2 * ((100% - 3 * 6rem) / 4) + 6rem); }
+
+.col-3-of-4 {
+  width: calc(3 * ((100% - 3 * 6rem) / 4) + 2 * 6rem); }
 
 .header {
   height: 95vh;
@@ -236,6 +450,7 @@ body {
   background-size: cover;
   background-position: top;
   /* top of image not crops with changing vw */
+  -webkit-clip-path: polygon(0 0, 100% 0, 100% 85vh, 0 100%);
   clip-path: polygon(0 0, 100% 0, 100% 85vh, 0 100%);
   position: relative; }
   .header__logo-box {
@@ -245,6 +460,25 @@ body {
   .header__logo {
     height: 35px; }
 
+.section-about {
+  background-color: #eee;
+  padding: 20rem 0 30rem 0;
+  margin-top: -15vh; }
+
 .section-features {
   padding: 20rem 0;
-  background-image: linear-gradient(to bottom right, rgba(126, 213, 111, 0.801), rgba(40, 180, 133, 0.801)), url("../../img/nat-4.jpg"); }
+  margin-top: -10rem;
+  background-image: linear-gradient(to bottom right, rgba(126, 213, 111, 0.801), rgba(40, 180, 133, 0.801)), url("../../img/nat-4.jpg");
+  background-size: cover;
+  transform: skewY(-4deg); }
+  .section-features > * {
+    transform: skewY(4deg); }
+
+.section-tours {
+  background-color: #eee;
+  padding: 10rem 0;
+  margin-top: -5rem; }
+
+.section-stories {
+  padding: 8rem 0;
+  position: relative; }

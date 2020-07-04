@@ -1,5 +1,25 @@
-.clearfix {
+@mixin clearfix {
+
+    &::after { 
     content: "";
     clear: both;
     display: table;
+
+    }
+    
 }
+
+@mixin card-yellow {
+   background-image: linear-gradient(to right bottom, $color-yellow-light, $color-yellow-dark);
+    
+}
+
+@mixin card-green {
+    background-image: linear-gradient(to right bottom, $color-primary-light, $color-primary-dark);
+     
+ }
+
+ @mixin card-blue {
+    background-image: linear-gradient(to right bottom, $color-blue-light, $color-blue-dark);
+     
+ }

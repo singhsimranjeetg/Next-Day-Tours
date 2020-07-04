@@ -1,0 +1,196 @@
+//FUNCTIONALITY
+
+.card {
+    perspective: 120rem; //used for rotation of card on hover ....sud be defined in the parent element.
+    -moz-perspective: 150rem;
+    position: relative;
+    height: 52rem;
+
+
+    &__side {
+
+     
+      font-size: large;
+      color: white;
+      height: 50rem;
+      transition: all 1.2s ease;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      backface-visibility: hidden;
+      border-radius: 3px;
+      box-shadow: 0 1.5rem 4rem rgba($color-black, .15);
+
+      &--front {
+          background-color: $color-bg-white;
+          
+
+
+      }
+
+      &--back {
+          transform: rotateY(180deg);
+
+          &--1 {
+             @include card-yellow;
+
+          }
+
+          &--2 {
+              @include card-green;   
+              
+        }
+
+        &--3 {
+            @include card-blue
+              
+        }
+
+
+      }
+
+    }
+    
+
+
+    &:hover &__side--front{
+        transform: rotateY(-180deg);
+
+
+    }
+
+    &:hover &__side--back{
+        transform: rotateY(0deg);
+
+
+    }
+    //FRONT SIDE STYLING
+    &__picture {
+        background-size: cover;
+        height: 23rem;
+        background-blend-mode: screen;  //work on just few browsers, hover to see
+        overflow: hidden; //bcz image is overflowing the edges of parent
+        -webkit-clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+        clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+        border-top-left-radius: 5px;
+        border-top-right-radius: 5px;
+
+
+
+        &--1 {
+            background-image: linear-gradient(to right bottom, $color-yellow-light, $color-yellow-dark), url(../../img/nat-5.jpg);
+
+        }
+
+        &--2 {
+            background-image: linear-gradient(to right bottom, $color-primary-light, $color-primary-dark), url(../../img/nat-6.jpg);
+
+        }
+
+        &--3 {
+            background-image: linear-gradient(to right bottom, $color-blue-light, $color-blue-dark), url(../../img/nat-7.jpg);
+
+        }
+
+    }
+
+    &__heading {
+        position: absolute;
+        top: 8rem;
+        right: 7px;
+        opacity: .8;
+        text-transform: uppercase;
+        font-size: 2.8rem;
+        font-weight: 300;
+        color: $color-bg-white;
+        width: 75%; //of the card
+        text-align: right;
+        margin-right: 5px;
+       
+        
+
+
+    }
+
+    &__heading-span {
+        padding: 1rem 0rem;
+        padding-left: 5px;;
+        -webkit-box-decoration-break: clone;   //to make it work with chrome
+        box-decoration-break: clone;
+        
+
+
+        &--1 {
+            @include card-yellow;
+
+        }
+
+        &--2 {
+            @include card-green;
+            
+        }
+
+        &--3 {
+            @include card-blue;
+            
+        }
+    }
+
+    &__details {
+        color: #777;
+        text-transform: capitalize;
+        font-size: 1.5rem;
+        padding: 1rem;
+        
+
+        ul {
+            width: 70%;
+            
+
+
+        }
+
+        li {
+            list-style-type: none;
+            padding: 1rem;
+            text-align: center;
+
+            &:not(:last-child) {
+                border-bottom: 1px solid $color-grey-light-2;
+            }
+
+        }
+    
+
+    }
+
+    &__cta {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 90%;
+        text-align: center;
+    }
+
+    &__price-box {
+        text-align: center;
+        margin-bottom: 1rem;
+        color: $color-bg-white;
+        
+    }
+
+    &__price-only {
+        font-size: 1.4rem;
+        text-transform: uppercase;
+        margin-bottom: -6rem;
+
+    }
+
+    &__price-value {
+        font-size: 6rem;
+        font-weight: 100;
+
+    }
+}

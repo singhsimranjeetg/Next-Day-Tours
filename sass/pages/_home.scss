@@ -1,5 +1,40 @@
+.section-about {
+    background-color:#eee;
+    padding: 20rem 0 30rem 0;
+    margin-top: -15vh;
+}
+
+
+
+
 .section-features {
     padding: 20rem 0;
+    margin-top: -10rem;
     background-image: linear-gradient(to bottom right, rgba($color-primary-light, 0.801) , rgba($color-primary-dark, 0.801) ),
     url("../../img/nat-4.jpg");
+    background-size: cover;
+    transform: skewY(-4deg);    //clip-path: polygon(0 15vh, 100% 0, 100% 85vh, 0 100%);
+
+    & > * {       //applies on the direct child, row in this case.
+
+        transform: skewY(4deg);
+
+    }
+    
+
 }
+
+.section-tours {
+    background-color: #eee;
+    padding: 10rem 0;
+    margin-top: -5rem;
+
+}
+
+.section-stories {
+    padding: 8rem 0;
+    position: relative;
+}
+
+
+
