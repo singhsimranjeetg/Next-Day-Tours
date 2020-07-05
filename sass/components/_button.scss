@@ -1,5 +1,6 @@
 
 .btn {
+    &,      //just for button, all styles apply to btn class w.o. 
     &:link,
     &:visited {
         text-transform: uppercase;
@@ -10,15 +11,22 @@
         position: relative; 
         border-radius: 7rem;
         font-size: $default-font-size;
+
+        //Change for the <button> element
+        border: none;
+        cursor: pointer;
     
     }
     
-    &:hover{
+    &:hover
+    {
         transform: translateY(-2px);
         box-shadow: 0 10px 2rem rgba($color-black, 0.2);
         
     }
-    &:active{
+    &:active,
+    :focus {
+        outline: none;      //for button element
         transform: translateY(-1px);
         box-shadow: 0 .5rem 1rem rgba($color-black, 0.2); /* shadow in x shadow in y and blur and color of shadow */
         

@@ -36,5 +36,15 @@
     position: relative;
 }
 
+.section-book {
+    @include card-green;
+    padding: 15rem 0;
+}
+
+.section-footer {
+    background-color: #333;
+    padding: 10rem;
+    color: $color-bg-white;
+}
 
 

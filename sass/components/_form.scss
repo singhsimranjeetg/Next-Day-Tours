@@ -1,0 +1,113 @@
+.form {
+
+    &__group:not(:last-child) {
+        margin-bottom: 2rem;
+
+    }
+
+    
+
+    &__input {
+        font-size: 1.5rem;
+        padding: 1.5rem 2rem;
+        border-radius: 2px;
+        background-color: rgba($color-bg-white, .5);
+        font-family: inherit;   //form elements have default font family
+        // color: inherit;       //use same color as placeholder
+        border: none;
+        border-bottom: 2px solid transparent;
+        width: 80%;
+        display: block;
+        transition: all .3s;
+
+        &:focus {
+            outline: none;
+            border-bottom: 2px solid $color-primary;
+            box-shadow: 0 1rem 2rem rgba($color-black, .1);
+            
+        }
+
+        &:focus:invalid {
+            border-bottom: 2px solid $color-yellow-dark;
+
+        }
+
+        &::-webkit-input-placeholder {     //only work on safari and chrome 2017
+            color: $color-grey-dark-2;
+
+        }
+
+    }
+
+    &__radio-input {
+        display: none;
+    }
+
+    &__label {
+        font-size: 1.2rem;
+        font-weight: 700;
+        margin-left: 2rem;
+        margin-bottom: .7rem;
+        display: block; 
+        transition: all .4s;
+    }
+
+    &__input:placeholder-shown ~ &__label   {     //+ is sibling selector which comes in order of html written //when placeholder is shown/no input, then selecting label
+        opacity: 0;      //cant animate the visiblity so we use opacity
+        visibility: hidden; 
+        transform: translateY(4rem);
+
+
+    }
+
+    &__radio-group {
+        width: 40%;
+        display: inline-block;
+        margin-left: 4rem;
+        
+
+    }
+
+    &__radio-label {
+        font-size: $default-font-size;
+        cursor: pointer;
+        position: relative;
+
+    }
+
+    &__radio-button {
+        width: 2rem;
+        height: 2rem;
+        border: 5px solid $color-primary;
+        border-radius: 50%;
+        display: inline-block;   //above prop only work on block or inline block elements, so span is inline
+        position: absolute;
+        left: -4rem;
+        top: -.4rem;
+
+
+
+        &::after {
+            content: "";
+            display: block;
+            height: 1.5rem;
+            width: 1.5rem;
+            border-radius: 50%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: $color-primary;
+            opacity: 0;   
+            transition: opacity $transition-time;   
+
+        }
+
+    }
+
+    &__radio-input:checked ~ &__radio-label &__radio-button::after {      //first selecting the sibling element and then the child 
+        opacity: 1;
+        
+    }
+
+}
