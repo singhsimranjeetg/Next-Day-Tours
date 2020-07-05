@@ -23,3 +23,11 @@
     background-image: linear-gradient(to right bottom, $color-blue-light, $color-blue-dark);
      
  }
+
+@mixin centerHV {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+   
+}

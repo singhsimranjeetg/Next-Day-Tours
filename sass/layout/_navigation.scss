@@ -1,0 +1,157 @@
+.navigation {
+
+    &__checkbox {
+        display: none;
+
+    }
+
+    &__button {
+        background-color: $color-bg-white;
+        height: 6.5rem;
+        width: 6.5rem;   //again circle
+        position: fixed;
+        top: 6rem;
+        right: 6rem;
+        border-radius: 50%;
+        z-index: 2024;
+        box-shadow: 0 1rem 3rem rgba($color-black, .1);
+        text-align: center;
+        cursor: pointer;
+        
+
+
+
+    }
+
+    &__background {
+        height: 6rem;         //circle
+        width: 6rem;
+        border-radius: 50%;
+        position: fixed;      //same as absolute but doesnt move as we scroll the page.
+        top: 6.5rem;
+        right: 6.5rem;
+        background-image: radial-gradient($color-primary-light, $color-primary-dark);
+        z-index: 1024;
+        transition: transform .8s;
+
+        //transform: scale(60);
+
+
+
+    }
+    
+    &__nav {
+        height: 100%;           //covering the whole page  
+        width: 0;            //optional , div element occupies the 100% of its width
+        position: fixed;
+        top: 0;
+        right: 0;
+        z-index: 1524;
+        opacity: 0;
+        transition: all .8s;
+
+    }
+
+    &__list {
+        @include centerHV;
+        list-style: none;
+        text-align: center;
+
+
+
+    }
+
+    &__item {
+
+    }
+    
+    &__link {
+
+        &:link,
+        &:visited {
+            display: inline-block;
+            font-size: 3rem;
+            font-weight: 300;
+            padding: 1rem 2rem;
+            color: $color-bg-white;
+            text-decoration: none;
+            text-transform: uppercase;
+            background-image: linear-gradient(120deg, transparent 0%, transparent 50%, $color-bg-white 50%) ;
+            background-size: 230%;       //when not hover, pushing the link box to the right
+            transition: all .4s;
+            
+
+
+        } 
+
+        &:hover,
+        &:active {
+            background-position: 100%;    
+            color: $color-primary;
+            transform: translateX(1rem);
+        }
+
+    }
+
+    //FUNCTIONALITY
+    &__checkbox:checked ~ &__background {    //as input check toggles(hidden),so we show bg and nav element. on checked content appears
+        transform: scale(60);
+    }
+
+    &__checkbox:checked ~ &__nav {
+        opacity: 1;
+        width: 100%;
+        
+    }
+
+    //ICON
+    &__icon {
+        position: relative;
+        margin-top: 2.9rem;
+        &,
+        &::before,
+        &::after {
+            width: 3rem;
+            height: 1.5px;
+            background-color: #333;
+            display: inline-block;
+        }
+        &::before,
+        &::after {
+            content: "";     //reqrd to see these psudo elements
+            position: absolute;
+            left: 0;  
+            transition: all $transition-time;    
+        }
+
+        &::before {top: -.8rem;}
+        &::after {top: .8rem;}
+    }
+
+    &__button:hover &__icon::before {       //bcz icon is child of button
+        top: -.88rem;
+    }
+    &__button:hover &__icon::after {       //bcz icon is child of button
+        top: .88rem;
+    }
+
+    &__checkbox:checked + &__button &__icon {
+        background-color: transparent;
+        
+    }
+
+    &__checkbox:checked + &__button &__icon::before {
+        transform: rotate(135deg);
+        top: 0;
+        
+    }
+
+    &__checkbox:checked + &__button &__icon::after {
+        transform: rotate(-135deg);
+        top: 0;
+        
+    }
+
+
+
+}
