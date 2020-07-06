@@ -1,0 +1,115 @@
+.popup {
+
+    height: 100vh;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba($color-black, .8);
+    z-index: 5024;
+    opacity: 0;
+    visibility: hidden;
+    transition: all $transition-time;
+
+    
+
+    &__close {
+        &:link,
+        &:visited {
+            display: inline-block;
+            color: $color-grey-dark;
+            position: absolute;
+            top: 1rem;
+            right: 2.5rem;
+            font-size: 3rem;
+            line-height: 1;
+            text-decoration: none;
+            transition: all $transition-time;
+
+        }
+
+        &:hover {
+            color: $color-primary;
+        }
+        
+    }
+
+
+
+    &__content {
+        @include centerHV;
+
+        width: 75%;
+        background-color: $color-bg-white;
+        box-shadow: 0 2rem 4rem rgba($color-black, .4);
+        border-radius: $border-radius;
+        display: table;
+        overflow: hidden; 
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(.25);
+        transition: all .5s .1s;                          //transition time and delay 
+
+    }
+
+    &:target &__content {     
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+
+    }
+
+
+    //OPEN FUNCTIONALITY
+    &:target {    //when the button with this element id clicks
+        opacity: 1;
+        visibility: visible;
+    }
+
+    
+
+    &__left {     
+        width: 33.33%;
+        display: table-cell;
+        vertical-align: middle;
+       
+
+    }
+
+    &__right {
+        width: 66.67;
+        display: table-cell;
+        vertical-align: top;   //can only apply on the table cell display.
+        padding: 3rem 5rem;
+
+        
+
+    }
+
+    &__image {
+        display: block;
+        width: 100%;
+        background-size: cover;
+
+
+    }
+
+    &__text {
+        display: block;
+        font-size: 1.4rem;
+
+        /* not using
+        column-count: 2;
+        column-gap: 4rem;
+        column-rule: 1px solid $color-black;
+        hyphens: auto
+        
+        */
+        
+
+
+
+        
+
+        
+
+    }
+}

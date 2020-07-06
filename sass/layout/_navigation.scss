@@ -24,12 +24,12 @@
     }
 
     &__background {
-        height: 6rem;         //circle
-        width: 6rem;
+        height: 5rem;         //circle
+        width: 5rem;
         border-radius: 50%;
         position: fixed;      //same as absolute but doesnt move as we scroll the page.
-        top: 6.5rem;
-        right: 6.5rem;
+        top: 6.8rem;
+        right: 6.8rem;
         background-image: radial-gradient($color-primary-light, $color-primary-dark);
         z-index: 1024;
         transition: transform .8s;
@@ -61,9 +61,7 @@
 
     }
 
-    &__item {
-
-    }
+    
     
     &__link {
 
@@ -107,7 +105,8 @@
     //ICON
     &__icon {
         position: relative;
-        margin-top: 2.9rem;
+        transform: translateY(3rem);
+        backface-visibility: hidden;
         &,
         &::before,
         &::after {
@@ -115,13 +114,15 @@
             height: 1.5px;
             background-color: #333;
             display: inline-block;
+            transition: all $transition-time;
         }
+
         &::before,
         &::after {
             content: "";     //reqrd to see these psudo elements
             position: absolute;
             left: 0;  
-            transition: all $transition-time;    
+                
         }
 
         &::before {top: -.8rem;}
@@ -130,9 +131,11 @@
 
     &__button:hover &__icon::before {       //bcz icon is child of button
         top: -.88rem;
+        height: 1.8px;
     }
     &__button:hover &__icon::after {       //bcz icon is child of button
         top: .88rem;
+        height: 1.8px;
     }
 
     &__checkbox:checked + &__button &__icon {
