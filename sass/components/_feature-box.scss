@@ -7,6 +7,10 @@
     border-radius: 3px;
     box-shadow: 0 1.5rem 4rem rgba($color-black, .15);
     transition: transform $transition-time;
+
+    @include respond(tab-port) {  //width ? < 900
+        padding: 2rem;    
+    }
     
 
     
@@ -19,6 +23,10 @@
         background-image: linear-gradient(to right, $color-primary-light, $color-primary-dark);
         color: transparent;
        -webkit-background-clip: text;
+
+       @include respond(tab-port) {  //width ? < 900
+        margin-bottom: 0;    
+    }
 
     }
 

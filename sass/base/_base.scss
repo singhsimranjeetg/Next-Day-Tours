@@ -6,7 +6,36 @@
     box-sizing: inherit;  
 }
 html {
-    font-size: 62.5%;   /* 62.5/100 * 16 = 10 = rem*/
+    font-size: 62.5%;   /* 62.5/100 * 16 = 10px = 1rem, this defines what 1rem is*/
+
+/* 
+using font-size in percents(for html) and units in rem brings huge advantage 
+for responsive design. As a result, while using MQ, we can change the size 
+of 1rem with font-size percent and scale up or down the whole webpage, like
+margin,paddings, font-sizez, widths, heights
+
+*/
+/*   unness. bcz tab-port is same as phone
+@include respond(phone) {
+    font-size: 50%;    //require 1rem = 8px, 8/16 = 50%
+    background-color: red;
+}*/
+
+//if mutliple conflicting MQ occur, one comes last will get applied
+@include respond(tab-land) {  //width? <1200
+    font-size: 56.25%;    //require 1rem = 8px, 9/16 = 56.25%
+    background-color: #eee;
+}
+
+@include respond(tab-port) {  //width ? < 900
+    font-size: 50%;    //require 1rem = 8px, 8/16 = 50%
+    background-color:#ddd;
+}
+
+@include respond(big-desktop) {    //width > 1800 ?
+    font-size: 75%;    //require 1rem = 12px, 12/16 = 75%
+    background-color: #ccc;
+}
 }
 
 body {
@@ -18,4 +47,9 @@ body {
     padding: 3rem;
     box-sizing: border-box;  /* The box-sizing property allows us to include the padding and border in an element's total width and height.*/
 
+    @include respond(tab-port) {  //width ? < 900
+        padding: 0;
+    }
+
 }
+

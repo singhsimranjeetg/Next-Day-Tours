@@ -13,6 +13,8 @@
     backface-visibility: hidden;
     margin-bottom: 5rem;
 
+    
+
 
 &--main {
     display: block;
@@ -20,6 +22,11 @@
     font-size: 6rem;
     letter-spacing: 3.5rem;
     animation: moveInLeft 1.25s ease-out;   /* animation: name duration timing-function delay iteration-count direction fill-mode; */
+
+    @include respond(phone) {  //width ? < 600
+        letter-spacing: 1rem;
+        font-size: 5rem;
+    }
     
 }
 
@@ -29,6 +36,11 @@
     font-weight: 700;
     letter-spacing: $default-font-size;
     animation: moveInRight 1.25s ease-out ;
+
+    @include respond(phone) {  //width ? < 600
+        letter-spacing: .5rem;
+        font-size: 1.5rem;
+    }
 
 }
 }
@@ -45,6 +57,14 @@
     -webkit-background-clip: text;
     letter-spacing: .2rem;
     transition: all .2s;
+
+    @include respond(tab-port) {  //width ? < 600
+        font-size:3rem;
+    }
+
+    @include respond(phone) {  //width ? < 600
+        font-size: 2.5rem;
+    }
 
     &:hover {
         transform: skewY(2deg) skewX(15deg) scale(1.1);

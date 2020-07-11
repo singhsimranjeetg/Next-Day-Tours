@@ -1,12 +1,23 @@
 .footer {
 
+
+
     &__logo-box {
 
+        @include respond(tab-port) {  //width ? < 900
+            margin-bottom: 2rem;      
+        }
+
     }
+
 
     &__logo {
         width: 15rem;
         height: auto;
+
+        @include respond(tab-port) {  //width ? < 900
+            width: 10rem;      
+        }
     }
 
 
@@ -14,6 +25,12 @@
         border-top: 1px solid $color-grey-dark;
         display: inline-block;
         padding-top: .5rem;
+
+        @include respond(tab-port) {  //width ? < 900
+            width: 100%;
+            text-align: center;      
+        }
+        
     }
 
     &__copyright {
@@ -22,6 +39,14 @@
         padding-top: 2rem;
         width: 80%;
         float: right;
+
+        @include respond(tab-port) {  //width ? < 900
+            width: 100%;
+            text-align: center;
+            float: none; 
+            padding-top: 0rem; 
+            margin-top: -4rem;    
+        }
     }
     
 

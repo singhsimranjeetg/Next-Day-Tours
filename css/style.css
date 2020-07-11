@@ -1,3 +1,18 @@
+/*
+0-600   Phone
+600-900  Tablet Portrait
+900-1200  Tablet Landscape
+1200-1800 Normal CSS, desktop first appraoch
+1800 + Big Desktop
+
+
+
+//breakoint arguement choices: 
+//1em = 16px, rely on browser in MQ
+
+ORDER: base + typography > general layout + grid + page layout > components
+
+*/
 @keyframes moveInLeft {
   0% {
     transform: translateX(-10rem);
@@ -37,7 +52,31 @@
 
 html {
   font-size: 62.5%;
-  /* 62.5/100 * 16 = 10 = rem*/ }
+  /* 62.5/100 * 16 = 10px = 1rem, this defines what 1rem is*/
+  /* 
+using font-size in percents(for html) and units in rem brings huge advantage 
+for responsive design. As a result, while using MQ, we can change the size 
+of 1rem with font-size percent and scale up or down the whole webpage, like
+margin,paddings, font-sizez, widths, heights
+
+*/
+  /*   unness. bcz tab-port is same as phone
+@include respond(phone) {
+    font-size: 50%;    //require 1rem = 8px, 8/16 = 50%
+    background-color: red;
+}*/ }
+  @media (max-width: 75em) {
+    html {
+      font-size: 56.25%;
+      background-color: #eee; } }
+  @media (max-width: 56.25em) {
+    html {
+      font-size: 50%;
+      background-color: #ddd; } }
+  @media (min-width: 112.5em) {
+    html {
+      font-size: 75%;
+      background-color: #ccc; } }
 
 body {
   font-family: "Lato", sans-serif;
@@ -48,6 +87,9 @@ body {
   padding: 3rem;
   box-sizing: border-box;
   /* The box-sizing property allows us to include the padding and border in an element's total width and height.*/ }
+  @media (max-width: 56.25em) {
+    body {
+      padding: 0; } }
 
 .header__center-box {
   position: absolute;
@@ -71,12 +113,20 @@ body {
     letter-spacing: 3.5rem;
     animation: moveInLeft 1.25s ease-out;
     /* animation: name duration timing-function delay iteration-count direction fill-mode; */ }
+    @media (max-width: 37.5em) {
+      .header-text--main {
+        letter-spacing: 1rem;
+        font-size: 5rem; } }
   .header-text--slogan {
     display: block;
     font-size: 2rem;
     font-weight: 700;
     letter-spacing: 1.6rem;
     animation: moveInRight 1.25s ease-out; }
+    @media (max-width: 37.5em) {
+      .header-text--slogan {
+        letter-spacing: .5rem;
+        font-size: 1.5rem; } }
 
 .heading-secondary {
   font-size: 3.5rem;
@@ -88,6 +138,12 @@ body {
   -webkit-background-clip: text;
   letter-spacing: .2rem;
   transition: all .2s; }
+  @media (max-width: 56.25em) {
+    .heading-secondary {
+      font-size: 3rem; } }
+  @media (max-width: 37.5em) {
+    .heading-secondary {
+      font-size: 2.5rem; } }
   .heading-secondary:hover {
     transform: skewY(2deg) skewX(15deg) scale(1.1);
     text-shadow: 0.5rem 1rem 2rem rgba(0, 0, 0, 0.2); }
@@ -103,19 +159,25 @@ body {
     margin-bottom: 3rem; }
 
 .u-center-text {
-  text-align: center; }
+  text-align: center !important; }
 
 .u-margin-bottom-big {
-  margin-bottom: 6rem; }
+  margin-bottom: 6rem !important; }
+  @media (max-width: 56.25em) {
+    .u-margin-bottom-big {
+      margin-bottom: 3rem !important; } }
 
 .u-margin-top-huge {
-  margin-top: 8rem; }
+  margin-top: 8rem !important; }
 
 .u-margin-bottom-medium {
-  margin-bottom: 4rem; }
+  margin-bottom: 4rem !important; }
+  @media (max-width: 56.25em) {
+    .u-margin-bottom-medium {
+      margin-bottom: 3rem !important; } }
 
 .u-margin-bottom-small {
-  margin-bottom: 1.5rem; }
+  margin-bottom: 1.5rem !important; }
 
 .bg-video {
   position: absolute;
@@ -136,9 +198,16 @@ body {
   background-size: cover;
   border-radius: 3px;
   box-shadow: 0 1.4rem 4rem rgba(0, 0, 0, 0.2); }
+  @media (max-width: 56.25em) {
+    .book {
+      background-image: linear-gradient(105deg, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.9) 100%), url(../img/nat-10.jpg); } }
   .book__form {
     width: 50%;
     padding: 6rem; }
+    @media (max-width: 56.25em) {
+      .book__form {
+        width: 85%;
+        padding: 1rem 2rem 4rem 4rem; } }
 
 .btn, .btn:link, .btn:visited {
   text-transform: uppercase;
@@ -328,15 +397,35 @@ body {
     z-index: 10;
     transition: all 0.2s;
     outline-offset: 2rem; }
+    @media (max-width: 56.25em) {
+      .composition__photo {
+        float: left;
+        position: relative;
+        width: 33.33%;
+        box-shadow: 0 1.5rem 3rem rgba(0, 0, 0, 0.2); } }
     .composition__photo--p1 {
       left: 0;
       top: -2rem; }
+      @media (max-width: 56.25em) {
+        .composition__photo--p1 {
+          top: 0;
+          transform: scale(1.2); } }
     .composition__photo--p2 {
       right: 0;
       top: 2rem; }
+      @media (max-width: 56.25em) {
+        .composition__photo--p2 {
+          top: -1rem;
+          transform: scale(1.3);
+          z-index: 100; } }
     .composition__photo--p3 {
       left: 20%;
       top: 10rem; }
+      @media (max-width: 56.25em) {
+        .composition__photo--p3 {
+          top: 1rem;
+          left: 0;
+          transform: scale(1.1); } }
     .composition__photo:hover {
       outline: 1.5rem solid #55c57a;
       transform: scale(1.05) translateY(-0.5rem);
@@ -353,6 +442,9 @@ body {
   border-radius: 3px;
   box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.15);
   transition: transform 0.2s; }
+  @media (max-width: 56.25em) {
+    .feature-box {
+      padding: 2rem; } }
   .feature-box__icon {
     font-size: 6rem;
     margin-bottom: .5rem;
@@ -360,6 +452,9 @@ body {
     background-image: linear-gradient(to right, #7ed56f, #28b485);
     color: transparent;
     -webkit-background-clip: text; }
+    @media (max-width: 56.25em) {
+      .feature-box__icon {
+        margin-bottom: 0; } }
   .feature-box:hover {
     transform: translateY(-1.5rem) scale(1.03); }
 
@@ -489,14 +584,25 @@ body {
     transform: translateX(-4rem) scale(1);
     filter: blur(3px) brightness(80%); }
 
+@media (max-width: 56.25em) {
+  .footer__logo-box {
+    margin-bottom: 2rem; } }
+
 .footer__logo {
   width: 15rem;
   height: auto; }
+  @media (max-width: 56.25em) {
+    .footer__logo {
+      width: 10rem; } }
 
 .footer__navigation {
   border-top: 1px solid #777;
   display: inline-block;
   padding-top: .5rem; }
+  @media (max-width: 56.25em) {
+    .footer__navigation {
+      width: 100%;
+      text-align: center; } }
 
 .footer__copyright {
   border-top: 1px solid #777;
@@ -504,6 +610,13 @@ body {
   padding-top: 2rem;
   width: 80%;
   float: right; }
+  @media (max-width: 56.25em) {
+    .footer__copyright {
+      width: 100%;
+      text-align: center;
+      float: none;
+      padding-top: 0rem;
+      margin-top: -4rem; } }
 
 .footer-list {
   list-style: none;
@@ -534,43 +647,65 @@ body {
   max-width: 114rem;
   margin: 0 auto; }
   .row:not(:last-child) {
-    margin-bottom: 8rem; }
+    margin-bottom: 6rem; }
+  @media (max-width: 56.25em) {
+    .row {
+      max-width: 50rem;
+      padding: 0 3rem; } }
 
 ::after {
   content: "";
   clear: both;
   display: table; }
 
-/*
-[class^="col"] {   //applies to all classes start with col-, can use # or * to indicate end and contain
-    float: left;
-
-    &:not(:last-child){
-        margin-right: $gutter-horizontal;
-    }
-}*/
 [class^="col-"] {
   float: left; }
   [class^="col-"]:not(:last-child) {
     margin-right: 6rem; }
+  @media (max-width: 56.25em) {
+    [class^="col-"] {
+      width: 100% !important;
+      float: none;
+      margin-right: 0; }
+      [class^="col-"]:not(:last-child) {
+        margin-bottom: 6rem; } }
 
 .col-1-of-2 {
   width: calc((100% - 6rem)/2); }
+  @media (max-width: 56.25em) {
+    .col-1-of-2 {
+      width: 100%; } }
 
 .col-1-of-3 {
   width: calc((100% - 2 * 6rem) / 3); }
+  @media (max-width: 56.25em) {
+    .col-1-of-3 {
+      width: 100%; } }
 
 .col-2-of-3 {
   width: calc(2 * ((100% - 2 * 6rem) / 3) + 6rem); }
+  @media (max-width: 56.25em) {
+    .col-2-of-3 {
+      width: 100%; } }
 
 .col-1-of-4 {
   width: calc((100% - 3 * 6rem) / 4); }
+  @media (max-width: 56.25em) {
+    .col-1-of-4 {
+      width: 100%;
+      margin-bottom: 2rem !important; } }
 
 .col-2-of-4 {
   width: calc(2 * ((100% - 3 * 6rem) / 4) + 6rem); }
+  @media (max-width: 56.25em) {
+    .col-2-of-4 {
+      width: 100%; } }
 
 .col-3-of-4 {
   width: calc(3 * ((100% - 3 * 6rem) / 4) + 2 * 6rem); }
+  @media (max-width: 56.25em) {
+    .col-3-of-4 {
+      width: 100%; } }
 
 .header {
   height: 95vh;
@@ -582,6 +717,11 @@ body {
   -webkit-clip-path: polygon(0 0, 100% 0, 100% 85vh, 0 100%);
   clip-path: polygon(0 0, 100% 0, 100% 85vh, 0 100%);
   position: relative; }
+  @media (max-width: 56.25em) {
+    .header {
+      -webkit-clip-path: polygon(0 0, 100% 0, 100% 55vh, 0 100%);
+      clip-path: polygon(0 0, 100% 0, 100% 55vh, 0 100%);
+      height: 60vh; } }
   .header__logo-box {
     position: absolute;
     top: 4rem;
@@ -604,6 +744,14 @@ body {
   box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.1);
   text-align: center;
   cursor: pointer; }
+  @media (max-width: 56.25em) {
+    .navigation__button {
+      top: 4rem;
+      right: 4rem; } }
+  @media (max-width: 37.5em) {
+    .navigation__button {
+      top: 4.5rem;
+      right: 3.5rem; } }
 
 .navigation__background {
   height: 5rem;
@@ -615,6 +763,14 @@ body {
   background-image: radial-gradient(#7ed56f, #28b485);
   z-index: 1024;
   transition: transform .8s; }
+  @media (max-width: 56.25em) {
+    .navigation__background {
+      top: 4.8rem;
+      right: 4.8rem; } }
+  @media (max-width: 37.5em) {
+    .navigation__background {
+      top: 4.5rem;
+      right: 3.5rem; } }
 
 .navigation__nav {
   height: 100%;
@@ -767,6 +923,9 @@ body {
   background-color: #eee;
   padding: 20rem 0 30rem 0;
   margin-top: -15vh; }
+  @media (max-width: 56.25em) {
+    .section-about {
+      padding: 20rem 0; } }
 
 .section-features {
   padding: 20rem 0;
@@ -776,11 +935,17 @@ body {
   transform: skewY(-4deg); }
   .section-features > * {
     transform: skewY(4deg); }
+  @media (max-width: 56.25em) {
+    .section-features {
+      padding: 8rem 0 4rem 0; } }
 
 .section-tours {
   background-color: #eee;
   padding: 10rem 0;
   margin-top: -5rem; }
+  @media (max-width: 56.25em) {
+    .section-tours {
+      padding: 8rem 0; } }
 
 .section-stories {
   padding: 8rem 0;
@@ -794,3 +959,6 @@ body {
   background-color: #333;
   padding: 10rem;
   color: #fff; }
+  @media (max-width: 56.25em) {
+    .section-footer {
+      padding: 2rem 6rem; } }
