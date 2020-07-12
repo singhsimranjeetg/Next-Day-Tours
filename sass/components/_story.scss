@@ -10,8 +10,25 @@
     font-size: $default-font-size;
     transform: skewX(-12deg);
     position: relative;
+
+    @include clearfix;
+
+    @include respond(tab-port){
+        width: 100%;
+        transform: skewX(0);
+        margin-left: -4rem;
+        height: auto;
     
+
+    }
     
+    @include respond(phone){
+        width: 80%;
+        margin-left: -2rem;
+        padding: 3rem 6rem;
+        
+
+    }
 
    // @include clearfix;
 
@@ -28,6 +45,17 @@
         clip-path: circle(50% at 50% 50%);
         transform: translateX(-3rem) skewX(12deg);    //never use margin or padding prop on floated element
         backface-visibility: hidden;
+
+        @include respond(tab-port){
+            transform: translateX(-6rem) skewX(0);
+        }
+
+        @include respond(phone){
+            float: none;
+            margin-left: 45%;
+            margin-bottom: 1.5rem;
+        }
+        
         
 
         & img {
@@ -46,7 +74,19 @@
         top: 6rem;
         left: 23rem;
         margin-right: 6rem;
+
+        @include respond(tab-port){
+            transform: skewX(0);
+        }
         
+        
+        @include respond(phone){
+            position: relative;
+            top: auto;
+            left: auto;
+            text-align: center;
+            margin-right: 0;
+        }
   
         
     }
