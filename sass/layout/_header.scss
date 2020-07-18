@@ -1,12 +1,26 @@
 .header {
-    height: 95vh;    /*vh - viewport height, 95% of element.*/
+    height: 85vh;    /*vh - viewport height, 95% of element.*/
     background-image: linear-gradient(to bottom right, rgba($color-primary-light, 0.801) , rgba($color-primary-dark, 0.801) ),
-    url("../img/hero.jpg");
+    url("../img/hero-small.jpg");
     background-size: cover; 
     background-position: top; /* top of image not crops with changing vw */
+    
+    position: relative;
+
+    @supports (clip-path: polygon(0 0)) or (-webkit-clip-path: polygon(0 0)) {
     -webkit-clip-path: polygon(0 0, 100% 0, 100% 85vh, 0 100%);
     clip-path: polygon(0 0, 100% 0, 100% 85vh, 0 100%);
-    position: relative;
+    height: 90vh;
+
+    }
+
+    @media (min-resolution: 192dpi) and (min-width: 37.25em),
+     (-webkit-min-device-pixel-ratio: 2) and (min-width: 37.25em),    //for safarri support.
+    (min-width: 125em) {
+        background-image: linear-gradient(to bottom right, rgba($color-primary-light, 0.801) , rgba($color-primary-dark, 0.801) ),
+    url("../../img/hero.jpg");
+
+    }
 
     @include respond(tab-port) {  //width ? < 900
         -webkit-clip-path: polygon(0 0, 100% 0, 100% 55vh, 0 100%);

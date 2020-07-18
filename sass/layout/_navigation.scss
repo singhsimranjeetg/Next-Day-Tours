@@ -41,7 +41,7 @@
         right: 6.8rem;
         background-image: radial-gradient($color-primary-light, $color-primary-dark);
         z-index: 1024;
-        transition: transform .8s;
+        transition: transform 1s ease;
 
         //transform: scale(60);
 
@@ -70,7 +70,7 @@
         right: 0;
         z-index: 1524;
         opacity: 0;
-        transition: all .8s;
+        transition: all 1s ease;
 
     }
 
@@ -115,7 +115,7 @@
 
     //FUNCTIONALITY
     &__checkbox:checked ~ &__background {    //as input check toggles(hidden),so we show bg and nav element. on checked content appears
-        transform: scale(60);
+        transform: scale(200);
     }
 
     &__checkbox:checked ~ &__nav {

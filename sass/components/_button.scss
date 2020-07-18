@@ -60,11 +60,11 @@
         background-color: $color-bg-white ;
     }
     
-    &:hover::after {
-        transform: scaleX(1.5) scaleY(1.6);
-        opacity: 0;
+   /* &:hover::after {
+       // transform: scaleX(1.5) scaleY(1.6);
+       // opacity: 0;
     
-    }
+    }*/
 
     &--green {
         background-image: linear-gradient(to right, $color-primary-light, $color-primary-dark);

@@ -41,10 +41,17 @@
         -webkit-shape-outside: circle(50% at 50% 50%);   //defines how text wud flow around the element
         shape-outside: circle(50% at 50% 50%);  //of the current element
 
-        -webkit-clip-path: circle(50% at 50% 50%);     
-        clip-path: circle(50% at 50% 50%);
         transform: translateX(-3rem) skewX(12deg);    //never use margin or padding prop on floated element
         backface-visibility: hidden;
+        border-radius: 50%;
+        overflow: hidden;
+
+        @supports (clip-path: polygon(0 0)) or (-webkit-clip-path: polygon(0 0)) {
+            -webkit-clip-path: circle(50% at 50% 50%);     
+            clip-path: circle(50% at 50% 50%);
+            border-radius: none;
+    
+            }
 
         @include respond(tab-port){
             transform: translateX(-6rem) skewX(0);
@@ -102,6 +109,11 @@
         color: $color-bg-white;
         opacity: 0;
         transition: all .5s;
+
+        @media only screen and (hover: none) {
+            opacity: 1;
+            transform: translate(-50%, 0%);      
+        }
     }
 
     &:hover &__caption {
@@ -113,6 +125,10 @@
     &:hover &__shape img {
         transform: translateX(-4rem) scale(1);
         filter: blur(3px) brightness(80%);
+
+        @media only screen and (hover: none) {
+            filter: blur(.8px);      
+        }
         
     }
     

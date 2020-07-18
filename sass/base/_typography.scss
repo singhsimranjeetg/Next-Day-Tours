@@ -4,6 +4,10 @@
     left: 50%;
     transform: translate(-50%, -50%); /* if not,element start from the position told above */
     text-align: center;    /* since button is inline-block element, its treated as text element"*/
+
+    @include respond(tab-port) {
+        top: 50%;
+    }
 }
 
 .header-text {
@@ -34,6 +38,7 @@
     display: block;
     font-size: 2rem;
     font-weight: 700;
+    padding-right: 1.5rem;
     letter-spacing: $default-font-size;
     animation: moveInRight 1.25s ease-out ;
 
